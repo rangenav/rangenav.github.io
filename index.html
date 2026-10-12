@@ -1,520 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- Primary Meta Tags -->
-  <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="PAPER_TITLE - AUTHOR_NAMES">
-  <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Add 5-10 relevant keywords for your research area -->
-  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
-  <!-- TODO: List all authors -->
-  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="article">
-  <!-- TODO: Replace with your institution or lab name -->
-  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
-  <!-- TODO: Same as paper title above -->
-  <meta property="og:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Replace with your actual website URL -->
-  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
-  <!-- TODO: Create a 1200x630px preview image and update path -->
-  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
-  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
-  <meta property="article:author" content="FIRST_AUTHOR_NAME">
-  <meta property="article:section" content="Research">
-  <meta property="article:tag" content="KEYWORD1">
-  <meta property="article:tag" content="KEYWORD2">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>RangeNav | LiDAR Pretraining for Robot Navigation</title>
+<meta content="RangeNav is a compact LiDAR range-image encoder pretrained on synthetic data for full-surround robot navigation. Robotic Systems Lab, ETH Zurich." name="description"/>
+<meta content="RangeNav: Task-Aligned LiDAR Range-Image Pretraining for Robot Navigation" property="og:title"/>
+<meta content="360° perception. 183k parameters. Zero-shot real-world navigation." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="#174e71" name="theme-color"/>
+<link href="static/images/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="static/css/bulma.min.css?v=58b286592209" rel="stylesheet"/>
+<link href="static/css/bulma-carousel.min.css?v=9d586b0d953f" rel="stylesheet"/>
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- TODO: Replace with your lab/institution Twitter handle -->
-  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
-  <!-- TODO: Replace with first author's Twitter handle -->
-  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
-  <!-- TODO: Same as paper title above -->
-  <meta name="twitter:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Same as social preview image above -->
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
-
-  <!-- Academic/Research Specific -->
-  <meta name="citation_title" content="PAPER_TITLE">
-  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
-  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
-  <meta name="citation_publication_date" content="2024">
-  <meta name="citation_conference_title" content="CONFERENCE_NAME">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
-  
-  <!-- Additional SEO -->
-  <meta name="theme-color" content="#2563eb">
-  <meta name="msapplication-TileColor" content="#2563eb">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://ajax.googleapis.com">
-  <link rel="preconnect" href="https://documentcloud.adobe.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-
-
-  <!-- TODO: Replace with your paper title and authors -->
-  <title>PAPER_TITLE - AUTHOR_NAMES | Academic Research</title>
-  
-  <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="apple-touch-icon" href="static/images/favicon.ico">
-  
-  <!-- Critical CSS - Load synchronously -->
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-  
-  <!-- Non-critical CSS - Load asynchronously -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-  <!-- Fallback for browsers that don't support preload -->
-  <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  </noscript>
-  
-  <!-- Fonts - Optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Defer non-critical JavaScript -->
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
-  <script defer src="static/js/index.js"></script>
-  
-  <!-- Structured Data for Academic Papers -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "headline": "PAPER_TITLE",
-    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
-    "author": [
-      {
-        "@type": "Person",
-        "name": "FIRST_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "SECOND_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      }
-    ],
-    "datePublished": "2024-01-01",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CONFERENCE_OR_JOURNAL_NAME"
-    },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
-    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
-    "abstract": "FULL_ABSTRACT_TEXT_HERE",
-    "citation": "BIBTEX_CITATION_HERE",
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
-    "mainEntity": {
-      "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
-    },
-    "about": [
-      {
-        "@type": "Thing",
-        "name": "RESEARCH_AREA_1"
-      },
-      {
-        "@type": "Thing", 
-        "name": "RESEARCH_AREA_2"
-      }
-    ]
-  }
-  </script>
-  
-  <!-- Website/Organization Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "INSTITUTION_OR_LAB_NAME",
-    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
-    "sameAs": [
-      "https://twitter.com/YOUR_TWITTER_HANDLE",
-      "https://github.com/YOUR_GITHUB_USERNAME"
-    ]
-  }
-  </script>
+<link href="static/css/rangenav.css?v=dc91785e5ad2" rel="stylesheet"/>
 </head>
 <body>
-
-
-  <!-- Scroll to Top Button -->
-  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
-  <!-- More Works Dropdown -->
-  <div class="more-works-container">
-    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
-      <i class="fas fa-flask"></i>
-      More Works
-      <i class="fas fa-chevron-down dropdown-arrow"></i>
-    </button>
-    <div class="more-works-dropdown" id="moreWorksDropdown">
-      <div class="dropdown-header">
-        <h4>More Works from Our Lab</h4>
-        <button class="close-btn" onclick="toggleMoreWorks()">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="works-list">
-        <!-- TODO: Replace with your lab's related works -->
-        <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
-          <div class="work-info">
-            <!-- TODO: Replace with actual paper title -->
-            <h5>Paper Title 1</h5>
-            <!-- TODO: Replace with brief description -->
-            <p>Brief description of the work and its main contribution.</p>
-            <!-- TODO: Replace with venue and year -->
-            <span class="work-venue">Conference/Journal 2024</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <!-- TODO: Add more related works or remove extra items -->
-        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 2</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 3</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-      </div>
+<a class="skip-link" href="#main">Skip to content</a>
+<main id="main">
+<header class="hero">
+  <div class="hero-body container is-max-desktop has-text-centered">
+    <h1 class="title is-1 publication-title">RangeNav</h1>
+    <p class="subtitle is-3 publication-subtitle">Task-Aligned LiDAR Range-Image Pretraining<br> for Robot Navigation</p>
+    <p class="authors">Samuel Foo Enze · <a href="https://manthan99.github.io/">Manthan Patel</a> · <a href="https://scholar.google.com/citations?user=R3OeSRoAAAAJ&amp;hl=en">Fan Yang</a> · Linus Kramer<br> <a href="https://pascal-roth.github.io/">Pascal Roth</a> · <a href="https://rsl.ethz.ch/the-lab/people/person-detail.hutter.html">Marco Hutter</a> · <a href="https://cesarcadena.ethz.ch/">Cesar Cadena</a></p>
+    <p class="affiliation">Robotic Systems Lab, ETH Zurich</p>
+    <div class="publication-links">
+      <span class="button is-rounded release-status">Paper coming soon</span>
+      <a class="button is-rounded is-dark" href="#video">Video</a>
+      <span class="button is-rounded release-status">Code &amp; models coming soon</span>
     </div>
+    <nav class="section-links" aria-label="Page sections"><a href="#overview">Abstract</a><a href="#method">Method</a><a href="#deployments">Real world</a><a href="#simulation">Simulation</a><a href="#results">Results</a></nav>
   </div>
-
-  <main id="main-content">
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
-            <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
-              <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-                  </span>
-                  </div>
-
-                  <div class="is-size-5 publication-authors">
-                    <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Institution Name<br>Conference name and year</span>
-                    <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-
-                    <!-- TODO: Add your supplementary material PDF or remove this section -->
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span>
-
-                  <!-- TODO: Replace with your GitHub repository URL -->
-                  <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-
-                <!-- TODO: Update with your arXiv paper ID -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+</header>
+<section class="section video-section" id="video" aria-label="Project video">
+  <div class="container is-max-desktop"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/J3nDw-LYAfw" title="RangeNav research presentation and robot navigation demonstrations"></iframe>
+    <p class="media-caption">RangeNav: from synthetic pretraining to real-world navigation.</p>
+    <div class="metrics" aria-label="Project highlights"><div><strong>360°</strong><span>LiDAR coverage</span></div><div><strong>183k</strong><span>encoder parameters</span></div><div><strong>1,920</strong><span>parallel RL environments</span></div><div><strong>Zero-shot</strong><span>real-world transfer</span></div></div>
   </div>
 </section>
-
-
-<!-- Teaser video-->
-<section class="hero teaser">
+<section class="section" id="overview">
   <div class="container is-max-desktop">
-    <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video>
-      <!-- TODO: Replace with your video description -->
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
+    <h2 class="title is-3 has-text-centered">Abstract</h2>
+    <div class="prose">
+      <p>Autonomous mobile robots operating in dense crowds and cluttered sites require 360° perception to react to surrounding hazards. While panoramic LiDAR offers full-surround coverage, learning representations within reinforcement learning (RL) is sample-inefficient under sparse rewards, and existing 3D pretrained point-cloud encoders are too memory-heavy for massively parallel RL simulation.</p>
+      <p>We present <strong>RangeNav</strong>, a compact (183k parameters) LiDAR range-image encoder pretrained entirely on synthetic data. RangeNav uses anisotropic convolutions and circular padding to handle the extreme aspect ratio and azimuthal seam of range images. We pretrain the network using a navigation-aligned objective combining range reconstruction, semantic segmentation, and bird’s-eye-view (BEV) prediction, then freeze it for policy learning.</p>
+      <p>In simulation, adding semantic and BEV supervision increases success rates over a reconstruction-only baseline by an average of 32.03 and 23.73 percentage points (pp) in procedurally generated training and out-of-distribution realistic test environments, respectively. Zero-shot real-world deployments on a Unitree B2-W quadruped demonstrate robust navigation through dense crowds, low-light settings, and construction zones where limited-field-of-view depth policies struggle. Code and models will be open-sourced.</p>
     </div>
   </div>
 </section>
-<!-- End teaser video -->
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
+<section class="section" id="method">
   <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
-
-
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
+    <h2 class="title is-3 has-text-centered">Method</h2>
+    <p class="prose">We generate LiDAR observations from TartanGround, pretrain a compact encoder with three complementary objectives, and freeze it for policy learning. The decoder heads are used only during pretraining.</p>
+    <div id="method-carousel" class="carousel results-carousel" role="region" aria-roledescription="carousel" aria-label="Method figures">
+<figure class="item"><a class="figure-link" href="static/images/overview.webp" aria-label="Open full-size figure: System overview"><img alt="LiDAR projection, encoder and policy, auxiliary decoder heads, and robot deployments with dynamic obstacles, at a construction site, and in low light." height="2200" loading="lazy" src="static/images/overview.webp" width="1913"/></a><figcaption><strong>System overview.</strong> A panoramic LiDAR scan is encoded for a recurrent navigation policy.</figcaption></figure>
+<figure class="item"><a class="figure-link" href="static/images/projection.webp" aria-label="Open full-size figure: Synthetic data"><img alt="Six depth views projected into a panoramic LiDAR range image." height="883" loading="lazy" src="static/images/projection.webp" width="2200"/></a><figcaption><strong>Synthetic data.</strong> Six depth views are projected into a LiDAR range image. Noise and masking simulate imperfect observations.</figcaption></figure>
+<figure class="item"><a class="figure-link" href="static/images/training.webp" aria-label="Open full-size figure: Pretraining and policy learning"><img alt="RangeNav training pipeline, from synthetic observations and encoder pretraining to reinforcement-learning navigation." height="1504" loading="lazy" src="static/images/training.webp" width="2200"/></a><figcaption><strong>Pretraining and policy learning.</strong> Reconstruction, semantics, and bird’s-eye-view prediction supervise the encoder. The frozen encoder then feeds the navigation policy.</figcaption></figure>
 </div>
+    <p class="insight insight-blue"><strong>Key insight:</strong> Geometry, semantic labels, and top-down occupancy teach the encoder which scene information matters for navigation.</p>
+  </div>
+</section>
+<section class="section" id="deployments">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Real-World Navigation</h2>
+    <p class="prose">The system runs onboard a Unitree B2-W with a 32-beam RoboSense Helios LiDAR and Jetson AGX Orin. Demonstrations cover pedestrians, construction sites, narrow passages, and low-light environments.</p>
+    <div id="deployment-carousel" class="carousel results-carousel" role="region" aria-roledescription="carousel" aria-label="Real-world demonstrations">
+<figure class="item"><video controls muted loop playsinline preload="none" poster="static/images/deployments-poster.webp?v=6a6b0c2d108d" width="1280" height="720" aria-label="Real-world navigation" aria-describedby="deployments-caption"><source src="static/videos/deployments.mp4?v=461218e7f39e" type="video/mp4">Your browser does not support video.</video><figcaption id="deployments-caption"><strong>Real-world navigation.</strong> Zero-shot deployment on a Unitree B2-W in crowds, cluttered sites, and low light.</figcaption></figure>
+<figure class="item"><a class="figure-link" href="static/images/deployment.webp" aria-label="Open full-size figure: Real-world perception"><img alt="Real-world scenes with pedestrians, a fence, and vehicles, alongside LiDAR inputs and decoder predictions." height="1259" loading="lazy" src="static/images/deployment.webp" width="2200"/></a><figcaption><strong>Real-world perception.</strong> LiDAR inputs and predictions of range, semantics, and bird’s-eye-view occupancy. Decoder outputs are shown for visualization.</figcaption></figure>
 </div>
-</section>
-<!-- End image carousel -->
-
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- TODO: Replace with your YouTube video ID -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
+    <p class="insight insight-green"><strong>Key insight:</strong> The same encoder and policy transfer from simulation without real-world fine-tuning.</p>
   </div>
 </section>
-<!-- End youtube video -->
-
-
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
+<section class="section" id="simulation">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Simulation</h2>
+    <p class="prose">Training uses procedural mazes, pillars, stairs, and pits. Evaluation adds held-out scenes, starts close to walls, and moving pedestrians. Each environment uses 1,024 fixed start–goal scenarios.</p>
+    <div id="simulation-carousel" class="carousel results-carousel" role="region" aria-roledescription="carousel" aria-label="Simulation demonstrations and comparisons">
+<figure class="item"><video controls muted loop playsinline preload="none" poster="static/images/procedural-poster.webp" width="1280" height="720" aria-label="Procedural terrain" aria-describedby="procedural-caption"><source src="static/videos/procedural.mp4" type="video/mp4">Your browser does not support video.</video><figcaption id="procedural-caption"><strong>Procedural terrain.</strong> Navigation across mazes, pillars, stairs, and pits.</figcaption></figure>
+<figure class="item"><video controls muted loop playsinline preload="none" poster="static/images/held-out-poster.webp" width="1280" height="720" aria-label="Held-out environments" aria-describedby="held-out-caption"><source src="static/videos/held-out.mp4" type="video/mp4">Your browser does not support video.</video><figcaption id="held-out-caption"><strong>Held-out environments.</strong> Navigation in scenes excluded from reinforcement-learning training.</figcaption></figure>
+<figure class="item"><video controls muted loop playsinline preload="none" poster="static/images/side-wall-poster.webp" width="1280" height="720" aria-label="Starting beside a wall" aria-describedby="side-wall-caption"><source src="static/videos/side-wall.mp4" type="video/mp4">Your browser does not support video.</video><figcaption id="side-wall-caption"><strong>Starting beside a wall.</strong> Depth on the left; LiDAR on the right. Success increases from 79.98% to 88.87%.</figcaption></figure>
+<figure class="item"><video controls muted loop playsinline preload="none" poster="static/images/dynamic-poster.webp" width="1280" height="720" aria-label="Moving pedestrians" aria-describedby="dynamic-caption"><source src="static/videos/dynamic.mp4" type="video/mp4">Your browser does not support video.</video><figcaption id="dynamic-caption"><strong>Moving pedestrians.</strong> Depth on the left; LiDAR on the right. Success increases from 77.64% to 79.49%.</figcaption></figure>
+<figure class="item"><a class="figure-link" href="static/images/simulation.webp" aria-label="Open full-size figure: Evaluation environments"><img alt="Training and evaluation environments including maze, stairs, pits, side wall, Gascola, city, cable, and moving obstacles." height="696" loading="lazy" src="static/images/simulation.webp" width="2200"/></a><figcaption><strong>Evaluation environments.</strong> Procedural terrain, realistic scenes, wall-adjacent starts, and moving obstacles.</figcaption></figure>
+<figure class="item"><a class="figure-link" href="static/images/trajectories.webp" aria-label="Open full-size figure: Navigation trajectories"><img alt="Blue LiDAR and orange depth trajectories around dead ends and local clutter." height="1025" loading="lazy" src="static/images/trajectories.webp" width="2200"/></a><figcaption><strong>Navigation trajectories.</strong> LiDAR (blue) avoids a dead-end detour and escapes local clutter in these representative rollouts; depth is shown in orange.</figcaption></figure>
+</div>
+    <p class="insight insight-orange"><strong>Key insight:</strong> Panoramic LiDAR improves success over front-facing depth in side-wall and dynamic-obstacle scenarios. Depth remains stronger on pillars, stairs, and AbandonedCable.</p>
   </div>
 </section>
-<!-- End video carousel -->
-
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <!-- TODO: Replace with your poster PDF -->
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section>
-<!--End paper poster -->
-
-
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
-        </button>
-      </div>
-      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-  title={Your Paper Title Here},
-  author={First Author and Second Author and Third Author},
-  journal={Conference/Journal Name},
-  year={2024},
-  url={https://your-domain.com/your-project-page}
-}</code></pre>
-    </div>
-</section>
-<!--End BibTex citation -->
-
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
-        </div>
-      </div>
-    </div>
+<section class="section" id="results">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Results</h2>
+    <p class="prose">Adding semantic and BEV supervision improves average success over reconstruction alone by <strong>32.03 percentage points</strong> on the base mixture and <strong>23.73 percentage points</strong> on held-out TartanGround scenes.</p>
+    <div aria-label="Navigation success rate comparison" class="table-wrap" role="region" tabindex="0"><table class="table is-fullwidth"><caption>Navigation success rate (%) ↑</caption><thead><tr><th scope="col">Input / pretraining</th><th scope="col">Base mixture</th><th scope="col">TartanGround</th><th scope="col">Side-wall</th><th scope="col">Dynamic</th></tr></thead><tbody><tr><th scope="row">Depth baseline</th><td>95.36</td><td>72.95</td><td>79.98</td><td>77.64</td></tr><tr><th scope="row">LiDAR · Reconstruction</th><td>63.43</td><td>49.44</td><td>61.52</td><td>63.18</td></tr><tr><th scope="row">LiDAR · + Semantics</th><td>88.50</td><td>67.43</td><td>85.94</td><td>78.03</td></tr><tr class="ours"><th scope="row">RangeNav · + BEV</th><td>95.46</td><td>73.17</td><td>88.87</td><td>79.49</td></tr></tbody></table></div>
+    <p class="table-note">Success rate (%). Base mixture and TartanGround each average four environments; policies are trained for 15,000 iterations.</p>
+    <p class="prose">The 183k-parameter encoder supports <strong>1,920 parallel environments</strong> and <strong>1,469 training steps/s</strong> on one RTX 4090.</p>
+    <details class="detailed-results"><summary>Detailed results and ablations</summary>
+      <h3 class="title is-4">Per-environment success</h3><div aria-label="Success rate by evaluation environment (%) ↑" class="table-wrap" role="region" tabindex="0"><table class="table is-fullwidth"><caption>Success rate by evaluation environment (%) ↑</caption><thead><tr><th scope="col">Environment</th><th scope="col">Reconstruction only</th><th scope="col">RangeNav</th></tr></thead><tbody><tr><th scope="row">Maze</th><td>78.81</td><td>96.88</td></tr><tr><th scope="row">Pillars</th><td>80.08</td><td>98.54</td></tr><tr><th scope="row">Stairs</th><td>68.07</td><td>94.34</td></tr><tr><th scope="row">Pits</th><td>26.76</td><td>92.09</td></tr><tr><th scope="row">AbandonedCable</th><td>51.46</td><td>81.45</td></tr><tr><th scope="row">Gascola</th><td>29.98</td><td>51.56</td></tr><tr><th scope="row">ModernCityDowntown</th><td>46.39</td><td>86.13</td></tr><tr><th scope="row">Market</th><td>69.92</td><td>73.54</td></tr></tbody></table></div>
+      <h3 class="title is-4">Route efficiency</h3><div aria-label="Route efficiency on the procedural base mixture" class="table-wrap" role="region" tabindex="0"><table class="table is-fullwidth"><caption>Route efficiency on the procedural base mixture</caption><thead><tr><th scope="col">Metric</th><th scope="col">Depth</th><th scope="col">LiDAR</th></tr></thead><tbody><tr><th scope="row">Success weighted by path length (%) ↑</th><td>84.53</td><td>85.11</td></tr><tr><th scope="row">Time to goal (s) ↓</th><td>16.57</td><td>15.19</td></tr></tbody></table></div><p class="table-note">Aggregate values across maze, pillars, stairs, and pits.</p>
+      <h3 class="title is-4" id="efficiency">Encoder scalability</h3><div aria-label="Encoder scalability on one RTX 4090" class="table-wrap" role="region" tabindex="0"><table class="table is-fullwidth"><caption>Encoder scalability on one RTX 4090</caption><thead><tr><th scope="col">Encoder</th><th scope="col">Parameters</th><th scope="col">Max. RL environments</th><th scope="col">Throughput (steps/s)</th></tr></thead><tbody><tr><th scope="row">Utonia</th><td>137M</td><td>48</td><td>19</td></tr><tr><th scope="row">Sonata</th><td>108M</td><td>64</td><td>30</td></tr><tr><th scope="row">LitePT-S</th><td>12.7M</td><td>96</td><td>75</td></tr><tr class="ours"><th scope="row">RangeNav</th><td>183k</td><td>1,920</td><td>1,469</td></tr></tbody></table></div>
+      <h3 class="title is-4">Pretraining and architecture ablations</h3><div aria-label="Pretraining source · navigation success (%) ↑" class="table-wrap" role="region" tabindex="0"><table class="table is-fullwidth"><caption>Pretraining source · navigation success (%) ↑</caption><thead><tr><th scope="col">Pretraining</th><th scope="col">Success</th></tr></thead><tbody><tr><th scope="row">Sonata distillation</th><td>85.06</td></tr><tr><th scope="row">Utonia distillation</th><td>80.98</td></tr><tr class="ours"><th scope="row">RangeNav objectives</th><td>92.38</td></tr></tbody></table></div><div aria-label="Selected architecture ablations · success (%) ↑" class="table-wrap" role="region" tabindex="0"><table class="table is-fullwidth"><caption>Selected architecture ablations · success (%) ↑</caption><thead><tr><th scope="col">Variant</th><th scope="col">Parameters</th><th scope="col">Success</th></tr></thead><tbody><tr class="ours"><th scope="row">RangeNav · 3 × 9</th><td>183k</td><td>92.38</td></tr><tr><th scope="row">3 × 3 stem</th><td>182k</td><td>85.96</td></tr><tr><th scope="row">2× channel width</th><td>462k</td><td>91.53</td></tr><tr><th scope="row">RegNet-FPN</th><td>5.8M</td><td>70.46</td></tr></tbody></table></div>
+      <p class="table-note">The distillation and architecture ablations use a shorter 5,000-iteration RL budget and should not be directly compared with the main results.</p>
+    </details>
   </div>
-</footer>
-
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+</section>
+<section class="section" id="resources">
+  <div class="container is-max-desktop has-text-centered">
+    <h2 class="title is-3">Resources</h2>
+    <p>The paper, code, and pretrained models are coming soon.</p>
+    <p class="related">Related work: <a href="https://de-fm.github.io/">DeFM</a> · <a href="https://tartanair.org/tartanground/">TartanGround</a> · <a href="https://egohtr.github.io/">EgoHTR</a> · <a href="https://leggedrobotics.github.io/wildos/">WildOS</a></p>
+  </div>
+</section>
+</main>
+<footer class="footer">
+<div class="reading">
+<p><strong>RangeNav</strong> · Robotic Systems Lab, ETH Zurich</p>
+<p>Adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">Academic Project Page Template</a> by Eliahu Horwitz, derived from <a href="https://nerfies.github.io/">Nerfies</a>. Website template and adaptations: <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a>. Research media and manuscript retain their respective authors’ rights.</p></div></footer>
+<script src="static/js/bulma-carousel.min.js?v=a8a47bef2cd5" defer></script>
+<script src="static/js/carousels.js?v=0e34fb57ef7b" defer></script>
+<script src="static/js/videos.js?v=02702dc52465" defer></script>
+</body>
+</html>
